@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-red: #B1181E;
+  --color-red-dark: #8E1318;
+  --color-cocoa: #452129;
+  --color-cotton: #A6A684;
+  --color-cotton-light: #EDEDE3;
+  --color-cream: #FBFAF7;
+  --font-main: 'Futura', 'Futura PT', 'Trebuchet MS', 'Century Gothic', sans-serif;
+  --font-accent: 'Playfair Display', 'Playfair', Georgia, serif;
+}
+
+html, body {
+  background: var(--color-cream);
+  color: var(--color-cocoa);
+  font-family: var(--font-main);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-accent);
+}
+
+/* subtle scrollbar to keep tables tidy */
+.tablewrap::-webkit-scrollbar { height: 8px; }
+.tablewrap::-webkit-scrollbar-thumb { background: var(--color-cotton); border-radius: 4px; }
