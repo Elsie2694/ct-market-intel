@@ -55,18 +55,21 @@ export default function CatchmentPage() {
       </header>
 
       <section className="mb-8 grid grid-cols-2 gap-3 md:grid-cols-4">
-        <KpiCard label="For sale" value={num(k.totalForSale)} sub="live listings" />
-        <KpiCard label="To rent" value={num(k.totalToRent)} sub="live listings" />
-        <KpiCard label="Competing agents" value={num(k.competingAgents)} />
-        <KpiCard label="Demand" value={k.demandRating ?? "—"} sub="PropertyData rating" />
+        <KpiCard label="On the market" value={num(k.totalForSale)} sub="live listings" />
+        <KpiCard label="Under offer" value={num(k.underOffer)} sub="of those listings" />
+        <KpiCard label="Avg days on market" value={num(k.avgDaysOnMarket)} />
+        <KpiCard label="Portals active" value={num(k.competingAgents)} />
         <KpiCard label="Avg asking price" value={gbp(k.medianAskingPrice, { compact: true })} />
         <KpiCard label="Avg £/sq ft" value={gbp(k.medianPricePerSqf)} sub="indicative" />
-        <KpiCard label="Avg sold price" value={gbp(k.medianSoldPrice, { compact: true })} sub="Land Registry (lagged)" />
-        <KpiCard label="Avg rent" value={k.medianRent ? gbp(k.medianRent) + " pcm" : "—"} />
+        <KpiCard label="Catchment radius" value={snap.radiusMiles != null ? snap.radiusMiles + " mi" : "—"} />
+        <KpiCard label="Points analysed" value={num(snap.pointsAnalysed)} />
       </section>
 
       <section className="mb-8">
         <h2 className="mb-3 text-xl font-bold text-brand-cocoa">Competitor league</h2>
+        <p className="mb-3 text-sm text-brand-cocoa/60">
+          Agents ranked by live instructions in this catchment, merged across portals.
+        </p>
         <AgentLeague agents={snap.agents} />
       </section>
 

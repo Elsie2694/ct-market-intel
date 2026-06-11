@@ -60,11 +60,11 @@ export default function Home() {
               <div className="mt-4 grid grid-cols-3 gap-2 text-center">
                 <div>
                   <div className="text-xl font-bold text-brand-cocoa">{num(c.totalForSale)}</div>
-                  <div className="text-[10px] uppercase tracking-wide text-brand-cotton">For sale</div>
+                  <div className="text-[10px] uppercase tracking-wide text-brand-cotton">On market</div>
                 </div>
                 <div>
-                  <div className="text-xl font-bold text-brand-cocoa">{num(c.totalToRent)}</div>
-                  <div className="text-[10px] uppercase tracking-wide text-brand-cotton">To rent</div>
+                  <div className="text-xl font-bold text-brand-cocoa">{num(c.underOffer)}</div>
+                  <div className="text-[10px] uppercase tracking-wide text-brand-cotton">Under offer</div>
                 </div>
                 <div>
                   <div className="text-xl font-bold text-brand-red">{c.ourShare != null ? pct(c.ourShare) : "—"}</div>

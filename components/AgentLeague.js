@@ -16,7 +16,6 @@ export function AgentLeague({ agents = [] }) {
 
   return (
     <div className="grid gap-6 lg:grid-cols-2">
-      {/* League table */}
       <div className="overflow-hidden rounded-xl border border-brand-cotton/40 bg-white">
         <table className="w-full text-sm">
           <thead>
@@ -25,6 +24,7 @@ export function AgentLeague({ agents = [] }) {
               <th className="px-4 py-2 font-semibold">Agent</th>
               <th className="px-4 py-2 font-semibold text-right">Live</th>
               <th className="px-4 py-2 font-semibold text-right">Share</th>
+              <th className="px-4 py-2 font-semibold text-right">Avg price</th>
             </tr>
           </thead>
           <tbody>
@@ -39,13 +39,13 @@ export function AgentLeague({ agents = [] }) {
                 </td>
                 <td className="px-4 py-2 text-right">{num(a.listings)}</td>
                 <td className="px-4 py-2 text-right">{pct(a.share)}</td>
+                <td className="px-4 py-2 text-right">{a.avgValue ? gbp(a.avgValue, { compact: true }) : "—"}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
 
-      {/* Market share chart */}
       <div className="rounded-xl border border-brand-cotton/40 bg-white p-4">
         <ResponsiveContainer width="100%" height={Math.max(220, chartData.length * 34)}>
           <BarChart data={chartData} layout="vertical" margin={{ left: 8, right: 16 }}>

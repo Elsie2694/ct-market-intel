@@ -42,7 +42,7 @@ export async function GET(request) {
         type: c.type,
         refreshedAt: snap.refreshedAt,
         totalForSale: snap.kpis.totalForSale,
-        totalToRent: snap.kpis.totalToRent,
+        underOffer: snap.kpis.underOffer ?? 0,
         ourShare: snap.ourPosition?.share ?? null,
         hadErrors: snap.errors.length > 0,
       });
