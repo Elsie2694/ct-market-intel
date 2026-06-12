@@ -1,25 +1,19 @@
-// Cooper and Tanner office catchments.
-// Each entry anchors a full postcode; the PropertyData API expands a radius
-// around it until it finds enough data points and returns the actual radius used.
-// `id` is used as the KV storage key suffix and the URL slug.
+// Cooper and Tanner — competitor scouting catchment.
+//
+// Scoped to Chew Magna only: the competitive frontier toward Bristol, where C&T
+// has no office and wants to see what rival agents are doing.
+//
+// `query` is what we send to PropertyData. A FULL postcode (e.g. "BS40 8BG") makes
+// the API expand a circle around that point until it has a solid local sample (~20+
+// points) — giving a tight, village-centred catchment rather than the whole BS40
+// district. To widen reach later, switch `query` to the district ("BS40").
+// `postcode` is for display/reference.
 
 export const CATCHMENTS = [
-  { id: "chew-magna",      name: "Chew Magna",       postcode: "BS40 8BG", type: "Frontier (test)",        note: "Competitive frontier toward Bristol" },
-  { id: "castle-cary",     name: "Castle Cary",      postcode: "BA7 7BG",  type: "Residential" },
-  { id: "cheddar",         name: "Cheddar",          postcode: "BS27 3NA", type: "Residential + Lettings" },
-  { id: "frome",           name: "Frome",            postcode: "BA11 1AR", type: "Residential + Lettings" },
-  { id: "glastonbury",     name: "Glastonbury",      postcode: "BA6 9DS",  type: "Residential" },
-  { id: "midsomer-norton", name: "Midsomer Norton",  postcode: "BA3 2HP",  type: "Residential" },
-  { id: "shepton-mallet",  name: "Shepton Mallet",   postcode: "BA4 5AS",  type: "Residential + Lettings" },
-  { id: "street",          name: "Street",           postcode: "BA16 0EN", type: "Residential + Lettings" },
-  { id: "warminster",      name: "Warminster",       postcode: "BA12 9AN", type: "Residential + Lettings" },
-  { id: "wedmore",         name: "Wedmore",          postcode: "BS28 4EG", type: "Residential" },
-  { id: "wells",           name: "Wells",            postcode: "BA5 2DJ",  type: "Residential" },
+  { id: "chew-magna", name: "Chew Magna", postcode: "BS40 8BG", query: "BS40 8BG", type: "Competitor scouting", note: "Frontier toward Bristol — C&T has no office here" },
 ];
 
-// The agent name(s) that represent us, for highlighting in league tables.
-// PropertyData normalises agent names across portals; we match case-insensitively
-// on any of these substrings.
+// Name(s) that represent us, for highlighting where we appear.
 export const OUR_AGENT_MATCHERS = ["cooper and tanner", "cooper & tanner", "cooper tanner"];
 
 export function isOurAgent(name = "") {

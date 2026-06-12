@@ -24,7 +24,7 @@ export default function Home() {
         <div className="text-xs uppercase tracking-[0.2em] text-brand-red font-semibold">Cooper and Tanner</div>
         <h1 className="mt-1 text-3xl font-bold text-brand-cocoa">Market Intelligence</h1>
         <p className="mt-2 text-sm text-brand-cocoa/70">
-          Competitor listings, pricing and instruction share across our catchments.
+          Competitor activity around Chew Magna — our frontier toward Bristol.
           {index?.updatedAt ? <> Last refreshed {timeAgo(index.updatedAt)}.</> : null}
         </p>
       </header>
@@ -78,8 +78,16 @@ export default function Home() {
       )}
 
       <footer className="mt-10 border-t border-brand-cotton/40 pt-4 text-xs text-brand-cocoa/50">
-        Data via PropertyData (Rightmove, Zoopla, OnTheMarket &amp; Land Registry). Listings near
-        real-time; sold prices lag monthly. For internal Cooper and Tanner use.
+        <p className="font-semibold text-brand-cocoa/70">Data source &amp; coverage</p>
+        <p className="mt-1">
+          Competitor data via PropertyData, drawn from Zoopla and OnTheMarket listings.
+          Rightmove is not included — its data isn&#39;t available through a third-party feed —
+          so agents who market primarily on Rightmove (including Cooper and Tanner) will be
+          under-represented or absent. This tool is intended for scouting competitor activity
+          around Chew Magna, not for measuring market share. Figures are a near-real-time
+          snapshot and exclude properties not listed on the covered portals.
+        </p>
+        <p className="mt-2">For internal Cooper and Tanner use.</p>
       </footer>
     </main>
   );

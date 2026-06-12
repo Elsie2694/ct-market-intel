@@ -40,7 +40,7 @@ export default function CatchmentPage() {
         <h1 className="mt-1 text-3xl font-bold text-brand-cocoa">{snap.name}</h1>
         <p className="mt-1 text-sm text-brand-cocoa/70">
           {snap.postcode} · {snap.type}
-          {snap.radiusMiles != null ? <> · catchment radius ≈ {snap.radiusMiles} miles</> : null}
+          {snap.queryArea ? <> · area: {snap.queryArea} district</> : null}
           {" · "}refreshed {timeAgo(snap.refreshedAt)}
         </p>
         {snap.ourPosition ? (
@@ -58,10 +58,10 @@ export default function CatchmentPage() {
         <KpiCard label="On the market" value={num(k.totalForSale)} sub="live listings" />
         <KpiCard label="Under offer" value={num(k.underOffer)} sub="of those listings" />
         <KpiCard label="Avg days on market" value={num(k.avgDaysOnMarket)} />
-        <KpiCard label="Portals active" value={num(k.competingAgents)} />
+        <KpiCard label="Competing agents" value={num(k.competingAgents)} />
         <KpiCard label="Avg asking price" value={gbp(k.medianAskingPrice, { compact: true })} />
         <KpiCard label="Avg £/sq ft" value={gbp(k.medianPricePerSqf)} sub="indicative" />
-        <KpiCard label="Catchment radius" value={snap.radiusMiles != null ? snap.radiusMiles + " mi" : "—"} />
+        <KpiCard label="Area searched" value={snap.queryArea || "—"} sub="postcode district" />
         <KpiCard label="Points analysed" value={num(snap.pointsAnalysed)} />
       </section>
 
@@ -69,6 +69,8 @@ export default function CatchmentPage() {
         <h2 className="mb-3 text-xl font-bold text-brand-cocoa">Competitor league</h2>
         <p className="mb-3 text-sm text-brand-cocoa/60">
           Agents ranked by live instructions in this catchment, merged across portals.
+          Coverage is Zoopla + OnTheMarket only — Rightmove isn&#39;t available through the feed,
+          so Rightmove-led agents (including Cooper and Tanner) may be under-represented or absent.
         </p>
         <AgentLeague agents={snap.agents} />
       </section>
