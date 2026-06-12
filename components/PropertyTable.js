@@ -55,6 +55,7 @@ export function PropertyTable({ properties = [] }) {
           <thead>
             <tr className="bg-brand-cocoa text-white">
               {head("address", "Address")}
+              {head("agent", "Agent")}
               {head("type", "Type")}
               {head("beds", "Beds", true)}
               {head("price", "Price", true)}
@@ -68,6 +69,9 @@ export function PropertyTable({ properties = [] }) {
                 <td className="px-3 py-2 max-w-[280px] truncate" title={p.address}>
                   {p.url ? <a href={p.url} target="_blank" rel="noreferrer" className="hover:text-brand-red underline-offset-2 hover:underline">{p.address}</a> : p.address}
                 </td>
+                <td className="px-3 py-2" style={p.ours ? { color: "#B1181E", fontWeight: 600 } : undefined}>
+                  {p.agent || <span className="text-brand-cocoa/30">—</span>}
+                </td>
                 <td className="px-3 py-2">{p.type}</td>
                 <td className="px-3 py-2 text-right">{p.beds ?? "—"}</td>
                 <td className="px-3 py-2 text-right">{gbp(p.price)}</td>
@@ -80,7 +84,7 @@ export function PropertyTable({ properties = [] }) {
               </tr>
             ))}
             {!rows.length && (
-              <tr><td colSpan={6} className="px-3 py-6 text-center text-brand-cocoa/50">No matching properties.</td></tr>
+              <tr><td colSpan={7} className="px-3 py-6 text-center text-brand-cocoa/50">No matching properties.</td></tr>
             )}
           </tbody>
         </table>
